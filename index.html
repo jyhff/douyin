@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抖音 - 记录美好生活 (Douyin Web)</title>
+  <meta name="description" content="抖音Web沉浸式短视频应用，记录美好生活，发现精彩世界。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FE2C55'><path d='M12 2v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/></svg>">
+  <script type="module" crossorigin src="./assets/index-ChKOIscU.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DuvMthsg.css">
+</head>
+<body class="theme-dark mobile-mode">
+  <!-- 纯正移动端真机体验容器 (1:1 严格遵照 douyin_mobile_prototype.pen 画板规范) -->
+  <div class="mobile-app-wrapper">
+    <div class="mobile-app-shell">
+      <!-- 视频与各页面主视口 -->
+      <main class="feed-main-container">
+        <div class="feed-stage" id="feedStage">
+          <!-- 动态渲染 01~04/06~08/11~17 画板内容 -->
+        </div>
+      </main>
+
+    <!-- 1:1 还原真实抖音视频评论区抽屉 (根据最新真实截图: 完整合集、AI解析Tab、图片评论、底部友善评论栏) -->
+    <aside class="comments-drawer real-douyin-comment-drawer" id="commentsDrawer">
+      <!-- 顶部合集与工具栏 (截图 1:1 还原) -->
+      <div class="comment-drawer-topbar">
+        <div class="comment-album-link" id="commentAlbumLink" title="观看完整合集">
+          <span>观看完整合集: <strong style="color: #4a90e2; cursor: pointer;">S18攻略合集</strong></span>
+        </div>
+        <div class="comment-drawer-top-actions">
+          <button class="comment-expand-btn" id="btnExpandCommentDrawer" title="放大沉浸">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+          <button class="drawer-close-btn" id="closeCommentsDrawerBtn" title="关闭评论区">&times;</button>
+        </div>
+      </div>
+
+      <!-- 评论区二级 Tab: 评论 1093 vs AI 解析 (截图 1:1 还原) -->
+      <div class="comment-subtabs-bar">
+        <div class="comment-subtab-item active" id="tabCommentListBtn" data-tab="list">
+          <span id="drawerCommentsCount">评论 1093</span>
+        </div>
+        <div class="comment-subtab-item" id="tabCommentAiBtn" data-tab="ai">
+          <span>AI 解析</span>
+        </div>
+      </div>
+
+      <!-- 评论列表主体与 AI 解析面板 -->
+      <div class="comment-drawer-scroll-body">
+        <div class="comments-list" id="commentsList">
+          <!-- Rendered by JS: 真实 Y9、苍山负雪(带图片)、Me1ody 等评论 -->
+        </div>
+
+        <!-- AI 解析专属面板 -->
+        <div class="comment-ai-analysis-panel" id="commentAiPanel" style="display: none;">
+          <div class="ai-summary-card">
+            <div class="ai-card-title">
+              <span>🤖 抖音 AI 视频核心解析</span>
+              <span class="ai-tag">大模型深度提炼</span>
+            </div>
+            <p class="ai-summary-desc">根据当前视频讲解的《云顶之弈S18赛季神器上分指南》，AI 为你总结了 3 个核心要点：</p>
+            <ul class="ai-points-list">
+              <li><strong>1. 便携锻炉优先度：</strong>前期打工过渡首选「中娅悖论」或「振奋盔甲」，保血量连胜收益极高。</li>
+              <li><strong>2. 蜘蛛女皇适配神器：</strong>首推「魔蕴」保证开局秒放技能击溃前排，次选「死神之刃」放大爆发。</li>
+              <li><strong>3. 0秒定阵策略：</strong>活体锻炉每10回合提供新神器，中后期可无缝转高费九五阵容。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 截图 1:1 还原：底部经典「留下你的友善评论吧」胶囊操作条 -->
+      <div class="comment-real-bottom-bar">
+        <div class="comment-friendly-capsule">
+          <input type="text" id="newCommentInput" placeholder="留下你的友善评论吧" maxlength="200" autocomplete="off">
+          <div class="capsule-tools-group">
+            <button class="capsule-tool-btn" id="btnAttachCommentImg" title="添加评论图片">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </button>
+            <button class="capsule-tool-btn" id="btnAtFriendInComment" title="@好友">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path></svg>
+            </button>
+            <button class="capsule-tool-btn" id="btnCommentEmoji" title="选择表情">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+            </button>
+          </div>
+        </div>
+        <button class="comment-send-submit-btn" id="sendCommentBtn">发送</button>
+      </div>
+
+      <!-- 待发送图片预览条 -->
+      <div class="comment-attach-preview" id="commentAttachPreview" style="display: none;">
+        <img id="commentPreviewImg" src="" alt="preview">
+        <span class="preview-remove-btn" id="btnRemoveAttachImg">&times;</span>
+      </div>
+    </aside>
+
+  <!-- Video Long Press Action Modal (长按视频快捷操作) -->
+  <div class="modal-overlay" id="videoActionMenuModal">
+    <div class="action-sheet-bottom">
+      <div class="action-sheet-header">
+        <h4>视频快捷设置</h4>
+        <button class="modal-close-btn" id="closeActionMenuBtn">&times;</button>
+      </div>
+      <div class="action-sheet-grid">
+        <button class="action-grid-btn" id="btnToggleClearScreen">
+          <div class="action-grid-icon">👁️</div>
+          <span>清屏模式</span>
+        </button>
+        <button class="action-grid-btn" id="btnDownloadVideo">
+          <div class="action-grid-icon">📥</div>
+          <span>保存本地</span>
+        </button>
+        <button class="action-grid-btn" id="btnNotInterested">
+          <div class="action-grid-icon">🚫</div>
+          <span>不感兴趣</span>
+        </button>
+        <button class="action-grid-btn" id="btnReportVideo">
+          <div class="action-grid-icon">⚠️</div>
+          <span>内容举报</span>
+        </button>
+      </div>
+      <div class="speed-select-row">
+        <span>播放倍速：</span>
+        <button class="speed-btn active" data-speed="1.0">1.0X</button>
+        <button class="speed-btn" data-speed="1.25">1.25X</button>
+        <button class="speed-btn" data-speed="1.5">1.5X</button>
+        <button class="speed-btn" data-speed="2.0">2.0X</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publish Creative Center Modal (三模式创作发布中心) -->
+  <div class="modal-overlay" id="publishModal">
+    <div class="modal-card publish-creative-card">
+      <div class="modal-header">
+        <div class="publish-mode-tabs" id="publishModeTabs">
+          <button class="pub-mode-btn active" data-mode="video">📹 发视频</button>
+          <button class="pub-mode-btn" data-mode="image">🖼️ 发图文</button>
+          <button class="pub-mode-btn" data-mode="text">✍️ 发文字</button>
+        </div>
+        <button class="modal-close-btn" id="closePublishModalBtn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 1. 视频专属配置 -->
+        <div class="publish-pane active" id="paneVideo">
+          <div class="form-group">
+            <label>选择视频源 / 演示素材</label>
+            <div class="video-preset-selector" id="videoPresetSelector">
+              <div class="preset-pill active" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" data-cover="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80">
+                极光赛博朋克
+              </div>
+              <div class="preset-pill" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" data-cover="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80">
+                超跑疾驰时刻
+              </div>
+              <div class="preset-pill" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4" data-cover="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80">
+                都市霓虹穿梭
+              </div>
+            </div>
+            <div class="custom-url-wrap">
+              <input type="url" id="customVideoUrlInput" placeholder="或输入自定义 MP4 视频链接...">
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 图文专属配置 -->
+        <div class="publish-pane" id="paneImage" style="display: none;">
+          <div class="form-group">
+            <label>选择图文画册素材 (多选图库)</label>
+            <div class="image-preset-grid" id="imagePresetGrid">
+              <div class="img-pill active" data-img="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80">
+                <span>山野晚霞</span>
+              </div>
+              <div class="img-pill" data-img="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=100&q=80">
+                <span>雪山湖畔</span>
+              </div>
+              <div class="img-pill" data-img="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=100&q=80">
+                <span>极客氛围</span>
+              </div>
+              <div class="img-pill" data-img="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=100&q=80">
+                <span>生活音乐</span>
+              </div>
+            </div>
+            <div class="custom-url-wrap" style="margin-top: 8px;">
+              <input type="url" id="customImageUrlInput" placeholder="或输入外链单张/多张图片地址...">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 纯文字心情专属配置 -->
+        <div class="publish-pane" id="paneText" style="display: none;">
+          <div class="form-group">
+            <label>选择心情背景配色</label>
+            <div class="mood-color-bar" id="moodColorBar">
+              <div class="mood-color-circle active" data-color="linear-gradient(135deg, #FF416C, #FF4B2B)"></div>
+              <div class="mood-color-circle" data-color="linear-gradient(135deg, #11998e, #38ef7d)"></div>
+              <div class="mood-color-circle" data-color="linear-gradient(135deg, #8A2387, #E94057, #F27121)"></div>
+              <div class="mood-color-circle" data-color="linear-gradient(135deg, #00c6ff, #0072ff)"></div>
+              <div class="mood-color-circle" data-color="linear-gradient(135deg, #f857a6, #ff5858)"></div>
+            </div>
+            <div class="mood-preview-card" id="moodPreviewCard">
+              <p id="moodPreviewText">在此输入你的今日心情动态与生活感悟...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>文案及描述</label>
+          <textarea id="publishCaptionInput" rows="3" placeholder="记录美好生活，添加吸引人的文案与话题..."></textarea>
+        </div>
+
+        <div class="form-group" id="groupMusic">
+          <label>背景配乐 (BGM)</label>
+          <input type="text" id="publishMusicInput" value="原声 - 创作者小天创作的原声" placeholder="音乐名称">
+        </div>
+
+        <div class="form-group">
+          <label>热门话题推荐</label>
+          <div class="quick-tags">
+            <span class="quick-tag" data-tag="#记录美好生活">#记录美好生活</span>
+            <span class="quick-tag" data-tag="#朋友日常">#朋友日常</span>
+            <span class="quick-tag" data-tag="#前端全栈开发">#前端全栈开发</span>
+            <span class="quick-tag" data-tag="#抖音算法揭秘">#抖音算法揭秘</span>
+            <span class="quick-tag" data-tag="#今日心情">#今日心情</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelPublishBtn">取消</button>
+        <button class="btn-primary" id="submitPublishBtn">立即发布</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Profile Modal -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-card profile-modal-card">
+      <div class="modal-header">
+        <h3>创作者主页</h3>
+        <button class="modal-close-btn" id="closeProfileModalBtn">&times;</button>
+      </div>
+      <div class="modal-body profile-body" id="profileBodyContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Toast Modal -->
+  <div class="modal-overlay" id="shareModal">
+    <div class="modal-card share-card">
+      <div class="modal-header">
+        <h3>分享给好友</h3>
+        <button class="modal-close-btn" id="closeShareModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="share-options-grid">
+          <button class="share-item" id="shareWechat">
+            <div class="share-icon wechat">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="#07C160"><path d="M8.5 2C4.36 2 1 4.91 1 8.5c0 2.01 1.05 3.82 2.68 5.03l-.71 2.5 2.87-1.44c.83.27 1.73.41 2.66.41.21 0 .42-.01.62-.03-.38-.93-.62-1.93-.62-2.97 0-4.14 3.81-7.5 8.5-7.5.34 0 .67.02 1 .05C17.02 3.94 13.08 2 8.5 2zm7.5 6c-3.87 0-7 2.69-7 6s3.13 6 7 6c.78 0 1.53-.11 2.22-.32l2.38 1.19-.59-2.07c1.35-1.01 2.22-2.51 2.22-4.18 0-3.31-3.13-6-7-6z"/></svg>
+            </div>
+            <span>微信</span>
+          </button>
+          <button class="share-item" id="shareMoments">
+            <div class="share-icon moments">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="#2BA245"><circle cx="12" cy="12" r="10" stroke="#07C160" stroke-width="2" fill="none"/><circle cx="12" cy="7" r="2" fill="#07C160"/><circle cx="7" cy="14" r="2" fill="#07C160"/><circle cx="17" cy="14" r="2" fill="#07C160"/></svg>
+            </div>
+            <span>朋友圈</span>
+          </button>
+          <button class="share-item" id="shareQQ">
+            <div class="share-icon qq">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="#12B7F5"><path d="M12 2C7.58 2 4 5.58 4 10c0 2.37 1.04 4.5 2.69 5.96L6 20l4.5-1.5c.48.14.98.22 1.5.22 4.42 0 8-3.58 8-8s-3.58-8-8-8z"/></svg>
+            </div>
+            <span>QQ 好友</span>
+          </button>
+          <button class="share-item" id="shareCopyLink">
+            <div class="share-icon copy">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#FE2C55" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <span>复制链接</span>
+          </button>
+        </div>
+        <div class="share-link-preview">
+          <input type="text" id="shareLinkInput" readonly value="">
+          <button class="btn-copy-link" id="copyShareLinkBtn">复制</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Fullscreen Search Drawer -->
+  <div class="mobile-search-drawer" id="mobileSearchDrawer">
+    <div class="search-drawer-header">
+      <div class="search-bar-inner">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="mobileSearchInput" placeholder="搜索视频、作者、话题..." autocomplete="off">
+        <button class="search-clear-inner" id="mobileSearchClear">&times;</button>
+      </div>
+      <button class="btn-cancel-search" id="btnCancelMobileSearch">取消</button>
+    </div>
+    <div class="search-drawer-body">
+      <div class="search-section-title">大家都在搜</div>
+      <div class="hot-search-tags" id="hotSearchTags">
+        <span class="hot-tag-pill active">🔥 赛博极光夜都市</span>
+        <span class="hot-tag-pill">🔥 顶级超跑声浪</span>
+        <span class="hot-tag-pill">🏔️ 冰川湖泊日出</span>
+        <span class="hot-tag-pill">💻 Flutter 3.24移动端开发</span>
+        <span class="hot-tag-pill">✨ 记录美好生活</span>
+      </div>
+      <div class="search-section-title" style="margin-top: 20px;">历史搜索</div>
+      <div class="history-list" id="searchHistoryList">
+        <div class="history-item"><span>极客全栈架构师</span><span class="del-hist">&times;</span></div>
+        <div class="history-item"><span>#Flutter移动端开发</span><span class="del-hist">&times;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages Notification Drawer -->
+  <div class="mobile-messages-drawer" id="mobileMessagesDrawer">
+    <div class="drawer-header">
+      <h3>互动消息</h3>
+      <button class="drawer-close-btn" id="closeMessagesDrawerBtn">&times;</button>
+    </div>
+    <div class="messages-list" id="messagesList">
+      <div class="msg-category-row">
+        <div class="msg-cat-item">
+          <div class="msg-cat-icon like-bg">❤️</div>
+          <span>赞和收藏</span>
+        </div>
+        <div class="msg-cat-item">
+          <div class="msg-cat-icon at-bg">@</div>
+          <span>@我的</span>
+        </div>
+        <div class="msg-cat-item">
+          <div class="msg-cat-icon cmt-bg">💬</div>
+          <span>评论互动</span>
+        </div>
+        <div class="msg-cat-item">
+          <div class="msg-cat-icon fan-bg">👤</div>
+          <span>新增粉丝</span>
+        </div>
+      </div>
+      <div class="msg-items-group" id="recentMsgItems">
+        <div class="msg-card-item">
+          <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" class="msg-avatar">
+          <div class="msg-info">
+            <div class="msg-top"><strong>全栈攻城狮 👑</strong> <span class="msg-time">5分钟前</span></div>
+            <div class="msg-desc">点赞了你的视频《赛博极光夜都市》</div>
+          </div>
+        </div>
+        <div class="msg-card-item">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="msg-avatar">
+          <div class="msg-info">
+            <div class="msg-top"><strong>夜巡者</strong> <span class="msg-time">30分钟前</span></div>
+            <div class="msg-desc">评论：背景音乐太应景了，瞬间沉浸！</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Music Detail Drawer (音乐原声详情抽屉) -->
+  <div class="music-detail-drawer" id="musicDetailDrawer">
+    <div class="drawer-header">
+      <button class="drawer-back-btn" id="closeMusicDetailBtn">&larr;</button>
+      <h3 id="musicDetailTitle">音乐原声</h3>
+      <button class="drawer-share-btn" id="shareMusicBtn">↗</button>
+    </div>
+    <div class="music-detail-body" id="musicDetailBody">
+      <div class="music-meta-hero">
+        <div class="music-hero-disc" id="musicHeroDisc">
+          <img src="" id="musicHeroCover" class="disc-hero-img" alt="Cover">
+        </div>
+        <div class="music-hero-info">
+          <h2 id="musicHeroName">原声名称</h2>
+          <p id="musicHeroAuthor">创作者</p>
+          <div class="music-stats-row">
+            <span id="musicHeroUsage">12.8w 人使用过</span>
+          </div>
+          <div class="music-actions-row">
+            <button class="btn-collect-music" id="btnCollectMusic">⭐ 收藏音乐</button>
+            <button class="btn-shoot-same" id="btnShootSame">📷 拍同款</button>
+          </div>
+        </div>
+      </div>
+      <div class="music-videos-section">
+        <div class="section-title">聚合视频</div>
+        <div class="music-videos-grid" id="musicVideosGrid">
+          <!-- 视频九宫格 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Product Detail Drawer (电商小黄车与好物专区) -->
+  <div class="product-detail-drawer" id="productDetailDrawer">
+    <div class="drawer-header">
+      <h3 id="productDrawerTitle">精选好物 & 抖音电商</h3>
+      <button class="drawer-close-btn" id="closeProductDrawerBtn">&times;</button>
+    </div>
+    <div class="product-drawer-body" id="productDrawerBody">
+      <div class="product-banner">
+        <img src="" id="productImg" class="product-main-img" alt="Product">
+        <span class="product-badge-flag">热卖爆款 榜首</span>
+      </div>
+      <div class="product-core-info">
+        <div class="price-row">
+          <span class="currency">¥</span>
+          <span class="current-price" id="productPrice">99</span>
+          <span class="original-price" id="productOriginalPrice">¥299</span>
+          <span class="discount-pill">券后减200</span>
+        </div>
+        <h3 class="product-title" id="productTitle">极客赛博机械光影氛围灯 | 智能声光同频</h3>
+        <p class="product-sales" id="productSales">已售 3.6万件 · 99.8% 好评率</p>
+      </div>
+      <div class="product-assurance-list">
+        <span class="assure-item">✓ 正品保障</span>
+        <span class="assure-item">✓ 极速退款</span>
+        <span class="assure-item">✓ 7天无理由退换</span>
+        <span class="assure-item">✓ 顺丰包邮</span>
+      </div>
+      <div class="product-drawer-footer">
+        <button class="btn-cart-secondary" id="btnAddCartBtn">加入购物车</button>
+        <button class="btn-buy-primary" id="btnBuyNowBtn">立即领券购买</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Mall Drawer (抖音商城专区) -->
+  <div class="mall-drawer" id="douyinMallDrawer">
+    <div class="drawer-header">
+      <button class="drawer-back-btn" id="closeMallDrawerBtn">&larr;</button>
+      <h3>抖音商城 · 精选好物</h3>
+      <button class="drawer-cart-icon" id="mallCartBtn">🛒</button>
+    </div>
+    <div class="mall-drawer-body">
+      <div class="mall-banner-carousel">
+        <div class="mall-banner-item">
+          <div class="mall-banner-text">
+            <h4>百亿补贴 · 官方正品</h4>
+            <p>爆款低至 1 折起，全场包邮险</p>
+          </div>
+        </div>
+      </div>
+      <div class="mall-category-grid">
+        <div class="mall-cat-item">
+          <span class="cat-icon">📱</span>
+          <span>数码潮品</span>
+        </div>
+        <div class="mall-cat-item">
+          <span class="cat-icon">👕</span>
+          <span>潮流服饰</span>
+        </div>
+        <div class="mall-cat-item">
+          <span class="cat-icon">🍱</span>
+          <span>美食特产</span>
+        </div>
+        <div class="mall-cat-item">
+          <span class="cat-icon">⛺</span>
+          <span>户外旅行</span>
+        </div>
+      </div>
+      <div class="mall-product-list" id="mallProductList">
+        <!-- Mall Items populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 真实相机拍摄与发布全屏界面 (Camera Shooting & Creation Modal, 对应截图 114453) -->
+  <!-- 15. 相机拍摄工作台 (Camera Studio - 对齐画板15) -->
+  <div class="camera-modal" id="cameraRecordingModal">
+    <div class="camera-viewfinder" id="cameraViewfinder">
+      <!-- 状态栏 -->
+      <div class="prototype-mobile-status-bar">
+        <span class="status-time">11:45</span>
+        <div class="status-island"></div>
+        <span class="status-indicators">5G 100%</span>
+      </div>
+
+      <!-- Top Action Bar -->
+      <div class="camera-top-bar">
+        <button class="camera-tool-btn" id="closeCameraBtn" title="关闭">✕</button>
+        <div class="camera-sound-picker" id="cameraSoundPicker">
+          <span>🎵 选择音乐</span>
+        </div>
+        <button class="camera-tool-btn" id="cameraFlashBtn" title="闪光灯">⚡</button>
+      </div>
+
+      <!-- Right Vertical Tools Bar (画板15标准5项工具) -->
+      <div class="camera-right-tools">
+        <div class="camera-tool-item" id="cameraFlipBtn">
+          <div class="cam-icon-circle">🔄</div>
+          <span>翻转</span>
+        </div>
+        <div class="camera-tool-item" id="cameraSpeedBtn">
+          <div class="cam-icon-circle">⚡</div>
+          <span>快慢速</span>
+        </div>
+        <div class="camera-tool-item" id="cameraFilterBtn">
+          <div class="cam-icon-circle">✨</div>
+          <span>滤镜</span>
+        </div>
+        <div class="camera-tool-item" id="cameraBeautyBtn">
+          <div class="cam-icon-circle">💄</div>
+          <span>美化</span>
+        </div>
+        <div class="camera-tool-item" id="cameraTimerBtn">
+          <div class="cam-icon-circle">⏱️</div>
+          <span>倒计时</span>
+        </div>
+      </div>
+
+      <!-- Realtime Viewfinder clean background (逼真取景画面，无水印残影) -->
+      <div class="viewfinder-sim-preview" id="viewfinderPreview">
+        <div class="viewfinder-gradient-mask"></div>
+        <div class="recording-timer" id="recordingTimer">00:00</div>
+      </div>
+
+      <!-- Bottom Shooting Shutter & Controls (画板15对齐) -->
+      <div class="camera-board15-bottom">
+        <div class="camera-shutter-row">
+          <div class="camera-prop-btn" id="cameraPropBtn">
+            <div class="prop-icon-box">🎭</div>
+            <span>道具</span>
+          </div>
+
+          <div class="camera-shutter-wrap">
+            <div class="camera-shutter-outer-ring" id="cameraShutterBtn">
+              <div class="camera-shutter-inner-core" id="cameraShutterCore"></div>
+            </div>
+          </div>
+
+          <div class="camera-album-btn" id="cameraAlbumBtn">
+            <div class="album-thumb-box">🖼️</div>
+            <span>相册</span>
+          </div>
+        </div>
+
+        <!-- Mode Selector (画板15: 发日常 / 分段拍 / 拍照) -->
+        <div class="camera-board15-modes" id="cameraModeTabs">
+          <span class="mode-tab-item" data-mode="daily">发日常</span>
+          <span class="mode-tab-item active" data-mode="segment">分段拍</span>
+          <span class="mode-tab-item" data-mode="photo">拍照</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 真实搜索主页与搜索结果瀑布流全屏抽屉 (对应截图 114504 / 114534) -->
+  <div class="mobile-search-results-drawer" id="mobileSearchResultsDrawer">
+    <!-- Search Header -->
+    <div class="search-drawer-header">
+      <button class="drawer-back-btn" id="closeSearchResultsBtn">‹</button>
+      <div class="search-bar-inner">
+        <input type="text" id="searchResultsInput" placeholder="差速器" autocomplete="off">
+        <span class="search-camera-icon" id="searchCameraLens" title="拍照识图">📷</span>
+        <button class="search-clear-cross" id="searchClearCross" style="display: none;">✕</button>
+      </div>
+      <button class="search-submit-btn" id="searchSubmitAction">搜索</button>
+    </div>
+
+    <!-- 搜索主页视图容器 (截图 114504) -->
+    <div class="search-home-view" id="searchHomeView">
+      <!-- 历史搜索标签网格 -->
+      <div class="search-section-header">
+        <span class="sec-title">历史搜索</span>
+        <div class="sec-right-actions">
+          <span class="expand-history-btn" id="expandHistoryBtn">展开更多历史 ∨</span>
+          <span class="trash-history-btn" id="clearSearchHistoryBtn" title="清空历史">🗑️</span>
+        </div>
+      </div>
+      <div class="search-history-grid" id="searchHistoryGrid">
+        <div class="history-chip">软件工程完整流程项目</div>
+        <div class="history-chip">软件工程完成流程项目</div>
+        <div class="history-chip">黑暗仪式移除了吗</div>
+        <div class="history-chip">现在小学作业多吗</div>
+        <div class="history-chip">星子县观音桥开放时间</div>
+      </div>
+
+      <!-- 猜你想搜 / 榜单热词两列流 (截图 114504 像素级还原) -->
+      <div class="search-hot-columns-grid">
+        <div class="hot-col-item hot-red" data-query="差速器">
+          <span class="hot-num">1</span>
+          <span class="hot-text">差速器</span>
+        </div>
+        <div class="hot-col-item hot-red" data-query="自行车后挂式拖车">
+          <span class="hot-num">2</span>
+          <span class="hot-text">自行车后挂式拖车</span>
+          <span class="hot-more">⋮</span>
+        </div>
+        <div class="hot-col-item" data-query="汉堡王">
+          <span class="hot-num">3</span>
+          <span class="hot-text">汉堡王</span>
+          <span class="tag-badge-orange">团</span>
+        </div>
+        <div class="hot-col-item" data-query="麦当劳">
+          <span class="hot-num">4</span>
+          <span class="hot-text">麦当劳</span>
+        </div>
+        <div class="hot-col-item" data-query="无糖芬达">
+          <span class="hot-num">5</span>
+          <span class="hot-text">无糖芬达</span>
+          <span class="tag-badge-pink">券</span>
+        </div>
+        <div class="hot-col-item" data-query="KFC">
+          <span class="hot-num">6</span>
+          <span class="hot-text">KFC</span>
+        </div>
+        <div class="hot-col-item" data-query="肯德基">
+          <span class="hot-num">7</span>
+          <span class="hot-text">肯德基</span>
+        </div>
+        <div class="hot-col-item" data-query="非泼罗尼喷剂">
+          <span class="hot-num">8</span>
+          <span class="hot-text">非泼罗尼喷剂</span>
+        </div>
+      </div>
+
+      <!-- 优惠券横幅 -->
+      <div class="search-coupon-banner" id="couponBanner">
+        <div class="banner-left">
+          <span class="banner-badge">🍔 搜·汉堡王</span>
+          <span class="banner-tip">抢29.8元券</span>
+        </div>
+        <span class="banner-close" id="closeCouponBanner">✕</span>
+      </div>
+
+      <!-- 榜单分类 Tabs -->
+      <div class="search-category-tabs">
+        <span class="scat-tab active">猜你想看</span>
+        <span class="scat-tab">抖音热榜</span>
+        <span class="scat-tab">广州榜</span>
+        <span class="scat-tab">直播榜</span>
+        <span class="scat-tab">团购榜</span>
+      </div>
+
+      <!-- 探索双列瀑布流推荐 (截图 114504 真实卡片) -->
+      <div class="search-home-cards-grid">
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114504-JIk55zAZ.jpg" class="waterfall-crop-img img-left" alt="cover">
+            <span class="waterfall-tag">一加15T | 一加16</span>
+          </div>
+          <div class="waterfall-card-title">一加16就这R角？</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>晴天小风</span>
+            </div>
+            <span class="like-cnt">🤍 525</span>
+          </div>
+        </div>
+
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114504-JIk55zAZ.jpg" class="waterfall-crop-img img-right" alt="cover">
+            <span class="play-icon-badge">▶</span>
+          </div>
+          <div class="waterfall-card-title">这不是水，这是我发自内心的想法 😡</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>是个正常人？</span>
+            </div>
+            <span class="like-cnt">🤍 5859</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部麦克风浮钮 -->
+      <div class="search-voice-floater" id="searchVoiceBtn" title="语音搜索">
+        <span>🎙️</span>
+      </div>
+    </div>
+
+    <!-- 搜索结果列表视图容器 (截图 114534) -->
+    <div class="search-results-view" id="searchResultsView" style="display: none;">
+      <!-- 二级分类 Tabs (综合 / 视频 / 用户 / 商品 / 直播 / 音乐 / 经验) -->
+      <div class="search-result-tabs-row">
+        <span class="stab-item active" data-stab="all">综合</span>
+        <span class="stab-item" data-stab="video">视频</span>
+        <span class="stab-item" data-stab="user">用户</span>
+        <span class="stab-item" data-stab="goods">商品</span>
+        <span class="stab-item" data-stab="live">直播</span>
+        <span class="stab-item" data-stab="music">音乐</span>
+        <span class="stab-item" data-stab="experience">经验</span>
+      </div>
+
+      <!-- 搜索结果双列瀑布流 (截图 114534 像素级还原) -->
+      <div class="search-results-waterfall-grid" id="searchResultsList">
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114534-8I0mH8BN.jpg" class="waterfall-crop-img res-img-1" alt="cover">
+          </div>
+          <div class="waterfall-card-title">软件开发到底有哪些流程？10个步骤一次讲。👉 很多...</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>黄科聊开发</span>
+            </div>
+            <span class="like-cnt">🤍 112</span>
+          </div>
+        </div>
+
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114534-8I0mH8BN.jpg" class="waterfall-crop-img res-img-2" alt="cover">
+          </div>
+          <div class="waterfall-card-title">软件开发流程都是怎么样的呢？。开发流程都是怎么...</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>软件开发工程师</span>
+            </div>
+            <span class="like-cnt">🤍 15</span>
+          </div>
+        </div>
+
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114534-8I0mH8BN.jpg" class="waterfall-crop-img res-img-3" alt="cover">
+          </div>
+          <div class="waterfall-card-title">软件开发全流程，想要做软件开发的老板这里有整套...</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>小程序App开发红姐...</span>
+            </div>
+            <span class="like-cnt">🤍 46</span>
+          </div>
+        </div>
+
+        <div class="feed-waterfall-card">
+          <div class="waterfall-cover-wrap">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114534-8I0mH8BN.jpg" class="waterfall-crop-img res-img-4" alt="cover">
+          </div>
+          <div class="waterfall-card-title">怎么合规开发app、小程序。本公司专业做各种小...</div>
+          <div class="waterfall-author-row">
+            <div class="author-info">
+              <span class="author-avatar-dot"></span>
+              <span>西安软件开发</span>
+            </div>
+            <span class="like-cnt">🤍 331</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右下角 AI 继续追问胶囊浮钮 (截图 114534 像素级还原) -->
+      <div class="ai-followup-pill" id="aiFollowupBtn">
+        <span class="ai-sparkle">✨</span>
+        <span class="ai-text">继续追问</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 个人中心右侧侧边栏抽屉 (对应截图 114500) -->
+  <div class="profile-sidebar-drawer" id="profileSidebarDrawer">
+    <div class="sidebar-drawer-overlay" id="closeSidebarDrawerOverlay"></div>
+    <div class="sidebar-drawer-content">
+      <!-- Top Action Bar -->
+      <div class="sidebar-drawer-top-actions">
+        <div class="s-action-pill" id="btnDrawerSettings">
+          <span>⚙️ 设置</span>
+          <span class="unread-red-dot"></span>
+        </div>
+        <div class="s-action-pill" id="btnDrawerScan">
+          <span>⛶ 扫一扫</span>
+        </div>
+      </div>
+
+      <!-- Cards Group 1: 订单与钱包 -->
+      <div class="drawer-card-box">
+        <div class="drawer-cell-item" id="cellOrders">
+          <div class="cell-left">
+            <span class="cell-icon">🛒</span>
+            <span class="cell-name">我的订单</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item" id="cellWallet">
+          <div class="cell-left">
+            <span class="cell-icon">👛</span>
+            <span class="cell-name">我的钱包</span>
+          </div>
+          <div class="cell-right">
+            <span class="cell-sub-tip">退款成功</span>
+            <span class="cell-arrow">›</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Group 2: 历史与缓存 -->
+      <div class="drawer-card-box">
+        <div class="drawer-cell-item" id="cellHistory">
+          <div class="cell-left">
+            <span class="cell-icon">🕒</span>
+            <span class="cell-name">观看历史</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item">
+          <div class="cell-left">
+            <span class="cell-icon">📋</span>
+            <span class="cell-name">我的转化记录</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item">
+          <div class="cell-left">
+            <span class="cell-icon">💬</span>
+            <span class="cell-name">我的评论</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item">
+          <div class="cell-left">
+            <span class="cell-icon">☁️</span>
+            <span class="cell-name">离线缓存</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item">
+          <div class="cell-left">
+            <span class="cell-icon">▶️</span>
+            <span class="cell-name">稍后再看</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+      </div>
+
+      <!-- Cards Group 3: 创作者与客服 -->
+      <div class="drawer-card-box">
+        <div class="drawer-cell-item" id="cellCreatorCenter">
+          <div class="cell-left">
+            <span class="cell-icon">💡</span>
+            <span class="cell-name">抖音创作者中心</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item" id="cellService">
+          <div class="cell-left">
+            <span class="cell-icon">🎧</span>
+            <span class="cell-name">我的客服</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item" id="cellMyQr">
+          <div class="cell-left">
+            <span class="cell-icon">㗊</span>
+            <span class="cell-name">我的二维码</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+      </div>
+
+      <!-- Cards Group 4: 安全与切换 -->
+      <div class="drawer-card-box">
+        <div class="drawer-cell-item">
+          <div class="cell-left">
+            <span class="cell-icon">🌱</span>
+            <span class="cell-name">未成年人保护</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item" id="cellClearCache">
+          <div class="cell-left">
+            <span class="cell-icon">🗑️</span>
+            <span class="cell-name">清理缓存</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+        <div class="drawer-cell-item" id="cellSwitchAccount">
+          <div class="cell-left">
+            <span class="cell-icon">⇄</span>
+            <span class="cell-name">切换账号</span>
+          </div>
+          <span class="cell-arrow">›</span>
+        </div>
+      </div>
+
+      <!-- Bottom More Button -->
+      <div class="drawer-bottom-more-btn" id="btnDrawerMoreFeatures">
+        <span>㗊 更多功能</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 独立二级设置主页 (对应截图 114458) -->
+  <div class="standalone-settings-page" id="standaloneSettingsPage">
+    <div class="settings-nav-header">
+      <button class="settings-back-btn" id="closeSettingsPageBtn">‹</button>
+      <h2 class="settings-title">设置</h2>
+      <div style="width: 36px;"></div>
+    </div>
+
+    <div class="settings-page-body">
+      <!-- 账号分组 -->
+      <div class="settings-group-title">账号</div>
+      <div class="settings-card-group">
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">👤</span>
+            <span>账号与安全</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">🔒</span>
+            <span>隐私设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">¥</span>
+            <span>支付设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+      </div>
+
+      <!-- 通用分组 -->
+      <div class="settings-group-title">通用</div>
+      <div class="settings-card-group">
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">⚙️</span>
+            <span>通用设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">🔔</span>
+            <span>通知设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">💬</span>
+            <span>聊天与通话设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">📱</span>
+            <span>播放设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">✨</span>
+            <span>动态壁纸</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">🎨</span>
+            <span>背景设置</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">🅰️</span>
+            <span>长辈模式</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+        <div class="settings-row-item">
+          <div class="row-left">
+            <span class="row-icon">Aa</span>
+            <span>字体大小</span>
+          </div>
+          <span class="row-arrow">›</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部固定智能提问框 (截图 114458 像素级还原) -->
+    <div class="settings-bottom-ai-ask">
+      <div class="ai-ask-input-pill">
+        <span class="ask-lens">🔍</span>
+        <input type="text" placeholder="可以问我设置相关的问题" id="settingsAiAskInput">
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 切换账号全屏页面 (对应截图 114451) -->
+  <!-- 11. 切换账号页 (Switch Account - 对齐画板11) -->
+  <div class="switch-account-page" id="switchAccountPage">
+    <div class="prototype-mobile-status-bar">
+      <span class="status-time">11:45</span>
+      <div class="status-island"></div>
+      <span class="status-indicators">5G 100%</span>
+    </div>
+
+    <div class="board11-top-bar">
+      <button class="board11-close-btn" id="closeSwitchAccountBtn">✕</button>
+      <button class="board11-edit-btn" id="btnSwitchAccountEdit">编辑</button>
+    </div>
+
+    <div class="board11-header-title">
+      <h1 class="board11-main-title">切换账号</h1>
+      <p class="board11-sub-title">点击选择你需要切换登录的抖音账号</p>
+    </div>
+
+    <div class="board11-cards-list">
+      <!-- 账号卡片 1: 创作者小天 (当前登录) -->
+      <div class="board11-acc-card active" id="accCardCurrent">
+        <div class="board11-card-left">
+          <div class="board11-acc-avatar">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114451-BHXE015i.jpg" alt="avatar">
+          </div>
+          <div class="board11-acc-meta">
+            <div class="board11-acc-name">创作者小天 (当前登录)</div>
+            <div class="board11-acc-id">抖音号: dy_tian_creator</div>
+          </div>
+        </div>
+        <div class="board11-check-badge">✓</div>
+      </div>
+
+      <!-- 账号卡片 2: 极客科技副号 -->
+      <div class="board11-acc-card" id="accCardSub">
+        <div class="board11-card-left">
+          <div class="board11-acc-avatar">
+            <img src="./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114455-D2AxkrnO.jpg" alt="avatar">
+          </div>
+          <div class="board11-acc-meta">
+            <div class="board11-acc-name">极客科技副号</div>
+            <div class="board11-acc-id">抖音号: dy_geek_sub</div>
+          </div>
+        </div>
+        <div class="board11-arrow-badge">&gt;</div>
+      </div>
+
+      <!-- 添加或注册新账号按钮 (画板11) -->
+      <div class="board11-add-btn" id="openCreateAccountSheetBtn">
+        <span class="board11-add-plus">+</span>
+        <span class="board11-add-text">添加或注册新账号</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. 创建新账号半屏浮层 (Create Account Sheet - 对齐画板12) -->
+  <div class="create-account-sheet" id="createAccountSheet">
+    <div class="sheet-mask" id="closeCreateAccountMask"></div>
+    <div class="board12-sheet-container">
+      <div class="board12-sheet-header">
+        <h3 class="board12-sheet-title">创建新账号</h3>
+        <button class="board12-sheet-close" id="btnCloseCreateSheet">✕</button>
+      </div>
+
+      <div class="board12-btn-group">
+        <button class="board12-btn-primary" id="btnOneKeyRegister">本机号码一键注册 (138****8888)</button>
+        <button class="board12-btn-secondary" id="btnOtherPhoneRegister">使用其他手机号注册</button>
+      </div>
+
+      <div class="board12-third-logins">
+        <div class="board12-third-btn" id="btnWechatLogin">
+          <span>💬 微信</span>
+        </div>
+        <div class="board12-third-btn" id="btnAppleLogin">
+          <span>🍏 Apple</span>
+        </div>
+      </div>
+
+      <p class="board12-agreements">注册即代表同意《抖音用户服务协议》与《隐私政策》</p>
+    </div>
+  </div>
+
+  <!-- 13. 选择注册方式全屏页 (Select Register - 对齐画板13) -->
+  <div class="select-register-type-page" id="selectRegisterTypePage">
+    <div class="prototype-mobile-status-bar">
+      <span class="status-time">11:45</span>
+      <div class="status-island"></div>
+      <span class="status-indicators">5G 100%</span>
+    </div>
+
+    <div class="board13-top-bar">
+      <button class="board13-close-btn" id="closeRegisterTypeBtn">✕</button>
+      <span class="board13-help-btn" id="btnBoard13Help">帮助中心</span>
+    </div>
+
+    <div class="board13-body">
+      <div class="board13-title-box">
+        <h1 class="board13-main-title">登录后体验更多精彩</h1>
+        <p class="board13-sub-title">未注册手机号验证通过后将自动注册</p>
+      </div>
+
+      <!-- 手机号输入框容器 (+86 ∨ | 请输入手机号) -->
+      <div class="board13-input-capsule" id="board13InputCapsule">
+        <span class="board13-prefix">+86 ∨</span>
+        <div class="board13-divider"></div>
+        <input type="tel" class="board13-input" id="board13PhoneInput" placeholder="请输入手机号" maxlength="11">
+      </div>
+
+      <button class="board13-btn-submit" id="btnBoard13GetCode">获取短信验证码</button>
+
+      <div class="board13-third-section">
+        <div class="board13-third-label">其他方式登录</div>
+        <div class="board13-icons-row">
+          <div class="board13-circle-icon" title="微信登录">💬</div>
+          <div class="board13-circle-icon" title="QQ登录">🐧</div>
+          <div class="board13-circle-icon" title="Apple登录">🍏</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. 手机号与iOS实体数字软键盘全屏页 (Phone & Keyboard - 对齐画板14) -->
+  <div class="phone-login-page" id="phoneLoginPage">
+    <div class="prototype-mobile-status-bar">
+      <span class="status-time">11:45</span>
+      <div class="status-island"></div>
+      <span class="status-indicators">5G 100%</span>
+    </div>
+
+    <div class="board14-top-bar">
+      <button class="board14-back-btn" id="closePhoneLoginBtn">‹</button>
+      <span class="board14-pwd-btn" id="btnSwitchPwdMode">密码登录</span>
+    </div>
+
+    <div class="board14-input-section">
+      <h2 class="board14-headline">请输入手机号</h2>
+      <div class="board14-phone-row">
+        <span class="board14-region">+86</span>
+        <span class="board14-number" id="board14TypedNumber">138 9283 0</span>
+        <span class="board14-cursor"></span>
+      </div>
+      <div class="board14-line"></div>
+    </div>
+
+    <!-- iOS 9宫格实体数字软键盘 (画板14严格对齐规范) -->
+    <div class="board14-ios-keyboard">
+      <div class="ios-kb-row">
+        <div class="ios-kb-key" data-digit="1">
+          <span class="kb-num">1</span>
+        </div>
+        <div class="ios-kb-key" data-digit="2">
+          <span class="kb-num">2</span>
+          <span class="kb-sub">ABC</span>
+        </div>
+        <div class="ios-kb-key" data-digit="3">
+          <span class="kb-num">3</span>
+          <span class="kb-sub">DEF</span>
+        </div>
+      </div>
+      <div class="ios-kb-row">
+        <div class="ios-kb-key" data-digit="4">
+          <span class="kb-num">4</span>
+          <span class="kb-sub">GHI</span>
+        </div>
+        <div class="ios-kb-key" data-digit="5">
+          <span class="kb-num">5</span>
+          <span class="kb-sub">JKL</span>
+        </div>
+        <div class="ios-kb-key" data-digit="6">
+          <span class="kb-num">6</span>
+          <span class="kb-sub">MNO</span>
+        </div>
+      </div>
+      <div class="ios-kb-row">
+        <div class="ios-kb-key" data-digit="7">
+          <span class="kb-num">7</span>
+          <span class="kb-sub">PQRS</span>
+        </div>
+        <div class="ios-kb-key" data-digit="8">
+          <span class="kb-num">8</span>
+          <span class="kb-sub">TUV</span>
+        </div>
+        <div class="ios-kb-key" data-digit="9">
+          <span class="kb-num">9</span>
+          <span class="kb-sub">WXYZ</span>
+        </div>
+      </div>
+      <div class="ios-kb-row">
+        <div class="ios-kb-key empty"></div>
+        <div class="ios-kb-key" data-digit="0">
+          <span class="kb-num">0</span>
+          <span class="kb-sub">+</span>
+        </div>
+        <div class="ios-kb-key backspace" data-digit="backspace">
+          <span class="kb-num">⌫</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 独立私聊全屏对话窗口 (Chat Room Drawer) -->
+  <div class="chat-room-drawer" id="chatRoomDrawer">
+    <div class="chat-room-header">
+      <button class="chat-back-btn" id="closeChatRoomBtn">&larr;</button>
+      <div class="chat-user-profile">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" class="chat-head-avatar" id="chatTargetAvatar">
+        <div class="chat-head-info">
+          <div class="chat-head-name" id="chatTargetName">极客全栈架构师 ✓</div>
+          <div class="chat-online-status"><span class="green-dot"></span> 在线</div>
+        </div>
+      </div>
+      <button class="chat-more-btn" id="btnChatMore">•••</button>
+    </div>
+
+    <!-- 聊天流气泡展示区 -->
+    <div class="chat-messages-flow" id="chatMessagesFlow">
+      <!-- JS Dynamic Render -->
+    </div>
+
+    <!-- 快捷表情抽屉 (可折叠) -->
+    <div class="chat-emoji-panel" id="chatEmojiPanel" style="display: none;">
+      <span>😀</span><span>😂</span><span>😍</span><span>🎉</span><span>🚀</span><span>🔥</span><span>👍</span><span>❤️</span><span>💯</span><span>👏</span><span>🙏</span><span>🥺</span>
+    </div>
+
+    <!-- 底部私信操作栏 -->
+    <div class="chat-bottom-input-bar">
+      <button class="chat-tool-btn" id="btnChatToggleVoice" title="发送语音">🎙️</button>
+      <button class="chat-tool-btn" id="btnChatPickImage" title="发送图片">🖼️</button>
+      <button class="chat-tool-btn" id="btnChatToggleEmoji" title="快捷表情">😊</button>
+      <input type="text" class="chat-text-input" id="chatTextInput" placeholder="发私信聊聊天..." maxlength="300">
+      <button class="btn-chat-send" id="btnChatSend">发送</button>
+    </div>
+  </div>
+
+  
+  <!-- 19. 他人个人主页 (User Profile - 由pen原型精准生成) -->
+  <div class="user-profile-fullscreen-page" id="userProfileFullscreenPage" data-pencil-name="19. 他人个人主页 (User Profile)"
+      >
+        <div
+          data-pencil-name="顶部Hero背景大图" style="background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114507-DADeojJw.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; height: 220px; left: 0px; position: absolute; top: 0px; width: 390px; z-index: 0"
+        >
+          <div
+            data-pencil-name="渐变暗色遮罩"
+            style="background-color: #0000004d; box-sizing: border-box; height: 220px; left: 0px; position: absolute; top: 0px; width: 390px; z-index: 0"
+          ></div>
+        </div>
+        <div
+          data-pencil-name="状态栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: 44px; justify-content: space-between; left: 0px; padding: 14px 24px 0px 24px; position: absolute; top: 0px; width: 390px; z-index: 1"
+        >
+          <div
+            data-pencil-name="时间"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            23:10
+          </div>
+          <div
+            data-pencil-name="灵动岛"
+            style="align-items: flex-start; background-color: #000000; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 28px; justify-content: flex-start; width: 120px"
+          ></div>
+          <div
+            data-pencil-name="电量与信号"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            5G 100%
+          </div>
+        </div>
+        <div
+          data-pencil-name="顶部操作导航栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: 44px; justify-content: space-between; left: 0px; padding: 0px 16px; position: absolute; top: 44px; width: 390px; z-index: 2"
+        >
+          <div
+            data-pencil-name="返回按钮" id="closeUserProfileBtn" style="cursor: pointer; pointer-events: auto; align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+          >
+            <div
+              data-pencil-name="返回图标"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 24px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              ‹
+            </div>
+          </div>
+          <div
+            data-pencil-name="右侧操作区"
+            style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 8px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="求更新按钮" id="askUpdateBtn" style="cursor: pointer; pointer-events: auto; align-items: center; background-color: #00000066; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; padding: 6px 12px 6px 10px; width: fit-content"
+            >
+              <div
+                data-pencil-name="更新图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                👉
+              </div>
+              <div
+                data-pencil-name="求更新文字"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                求更新
+              </div>
+            </div>
+            <div
+              data-pencil-name="搜索按钮"
+              style="align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+            >
+              <div
+                data-pencil-name="搜索图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                🔍
+              </div>
+            </div>
+            <div
+              data-pencil-name="更多按钮"
+              style="align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+            >
+              <div
+                data-pencil-name="更多图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                •••
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="用户头像与名称区"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 14px; height: fit-content; justify-content: flex-start; left: 16px; position: absolute; top: 110px; width: fit-content; z-index: 3"
+        >
+          <div
+            data-pencil-name="头像外环" style="background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114509-CP04i7bZ.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 40px; box-sizing: border-box; flex-shrink: 0; height: 80px; outline: 3px solid #ffffff; width: 80px"
+          ></div>
+          <div
+            data-pencil-name="名称抖音号列"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="作者昵称"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 22px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              james_meow
+            </div>
+            <div
+              data-pencil-name="抖音号行" id="copyDouyinIdBtn" style="cursor: pointer; pointer-events: auto;" title="点击复制"
+              style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="抖音号文本"
+                style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                抖音号: 45575225266
+              </div>
+              <div
+                data-pencil-name="复制图标"
+                style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                ❐
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="白底详情与作品卡片"
+          style="align-items: flex-start; background-color: #ffffff; border-radius: 20px 20px 0px 0px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; height: 640px; justify-content: flex-start; left: 0px; padding: 16px; position: absolute; top: 204px; width: 390px; z-index: 4"
+        >
+          <div
+            data-pencil-name="社交数据行"
+            style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 20px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="项_获赞"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                147.2万
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                获赞
+              </div>
+            </div>
+            <div
+              data-pencil-name="项_关注"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                43
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                关注
+              </div>
+            </div>
+            <div
+              data-pencil-name="项_粉丝"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                7862
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                粉丝
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="个性签名与简介"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 3px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="简介1"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              喜欢一只咪🐈
+            </div>
+            <div
+              data-pencil-name="简介2"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              🈲连赞 乱剪乱发
+            </div>
+            <div
+              data-pencil-name="简介3"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              取图可以进群⬇️
+            </div>
+            <div
+              data-pencil-name="IP属地胶囊"
+              style="align-items: flex-start; background-color: #f2f3f5; border-radius: 4px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 3px 6px; width: fit-content"
+            >
+              <div
+                data-pencil-name="IP文字"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 500; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                IP: 陕西
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="群聊入口卡片"
+            style="align-items: center; background-color: #f8f9fa; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 12px; height: fit-content; justify-content: flex-start; padding: 10px 12px; width: 100%"
+          >
+            <div
+              data-pencil-name="群聊气泡图标"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 20px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              💭
+            </div>
+            <div
+              data-pencil-name="群聊文字列"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="群聊标题"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                群聊
+              </div>
+              <div
+                data-pencil-name="群聊副标"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                要图进群
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="关注操作按钮行"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 8px; height: fit-content; justify-content: flex-start; width: 100%"
+          >
+            <div
+              data-pencil-name="红色关注大按钮" id="userProfileFollowBtn" style="cursor: pointer; pointer-events: auto; align-items: center; background-color: #fe2c55; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex: 1 1 0; gap: 0px; height: 40px; justify-content: center"
+            >
+              <div
+                data-pencil-name="关注文字"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                + 关注
+              </div>
+            </div>
+            <div
+              data-pencil-name="私信倒三角按钮"
+              style="align-items: center; background-color: #f2f3f5; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 40px; justify-content: center; width: 40px"
+            >
+              <div
+                data-pencil-name="倒三角图标"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                ▼
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="作品Tab行"
+            style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="作品Tab文字"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              作品 97
+            </div>
+            <div
+              data-pencil-name="Tab倒三角"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              ▼
+            </div>
+          </div>
+          <div
+            data-pencil-name="作品网格容器"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+          >
+            <div
+              data-pencil-name="网格第1行"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+            >
+              <div
+                data-pencil-name="作品1_置顶"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114509-CP04i7bZ.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    4.1万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品2_圣罗兰"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114507-DADeojJw.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="中间配文"
+                  style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; left: 8px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 70px; white-space: nowrap; z-index: 1"
+                >
+                  SAINTLAURENT
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 2"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    4.1万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品3_热身"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114505-BGSID8iZ.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="中间配文"
+                  style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; left: 8px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 70px; white-space: nowrap; z-index: 1"
+                >
+                  3秒时间 詹咪热身
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 2"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    1.2万
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-pencil-name="网格第2行"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+            >
+              <div
+                data-pencil-name="作品4_10小时前"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114457-CZmcBuem.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #00000080; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    10小时前
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    3.8万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品5_演唱"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114455-D2AxkrnO.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    5.6万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品6_绿发刚刚看过"
+                style=" background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative; background-image: url('./assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018114451-BHXE015i.jpg') !important; background-position: center !important; background-size: cover !important; background-repeat: no-repeat !important;"
+              >
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    8.9万
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="刚刚看过药丸"
+                  style="align-items: center; background-color: #ffffff; border-radius: 12px; box-sizing: border-box; display: flex; flex-direction: row; gap: 2px; height: fit-content; justify-content: flex-start; left: 24px; padding: 3px 8px; position: absolute; top: 110px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="文字"
+                    style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    刚刚看过 ︾
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- 10. 独立设置页 (Settings Page - 对齐画板10) -->
+  <div class="settings-drawer" id="settingsDrawer">
+    <div class="prototype-mobile-status-bar">
+      <span class="status-time">11:45</span>
+      <div class="status-island"></div>
+      <span class="status-indicators">5G 100%</span>
+    </div>
+
+    <!-- 设置导航栏 -->
+    <div class="board10-nav-bar">
+      <button class="board10-back-btn" id="closeSettingsBtn">‹</button>
+      <h2 class="board10-title">设置</h2>
+      <div style="width: 32px;"></div>
+    </div>
+
+    <div class="board10-scroll-body">
+      <!-- AI智能搜索与提问卡片 -->
+      <div class="board10-ai-search-card" id="board10AiCard">
+        <span class="board10-ai-sparkle">✨</span>
+        <input type="text" class="board10-ai-input" id="board10AiInput" placeholder="搜索设置项，或向 AI 提问使用技巧...">
+      </div>
+
+      <!-- 设置项列表 (三大半透明分组) -->
+      <div class="board10-settings-list">
+        <!-- 分组 1: 账号 -->
+        <div class="board10-group-card">
+          <div class="board10-item-row" id="btnSettingAccountSec">
+            <span class="board10-item-name">账号与安全</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row" id="btnSettingRealname">
+            <span class="board10-item-name">实名认证</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row" id="btnSettingDeviceMgr">
+            <span class="board10-item-name">登录设备管理</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+        </div>
+
+        <!-- 分组 2: 内容与偏好 -->
+        <div class="board10-group-card">
+          <div class="board10-item-row" id="btnSettingGeneral">
+            <span class="board10-item-name">通用设置</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row" id="btnSettingNotify">
+            <span class="board10-item-name">通知设置</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row" id="btnSettingsThemeToggle">
+            <span class="board10-item-name">深色模式与音量</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row" id="btnSettingPrivacy">
+            <span class="board10-item-name">隐私与权限设置</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+        </div>
+
+        <!-- 分组 3: 账号操作 -->
+        <div class="board10-group-card">
+          <div class="board10-item-row" id="btnSwitchAccount">
+            <span class="board10-item-name">切换账号</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+          <div class="board10-item-row danger" id="btnSettingsLogout">
+            <span class="board10-item-name">退出登录</span>
+            <span class="board10-arrow">&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /.mobile-app-shell -->
+  </div><!-- /.mobile-app-wrapper -->
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Script entry -->
+</body>
+</html>
