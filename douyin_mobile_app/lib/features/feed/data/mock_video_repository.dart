@@ -1,0 +1,103 @@
+import '../models/video_model.dart';
+
+class MockVideoRepository {
+  static List<VideoItem> getInitialVideos() {
+    return [
+      VideoItem(
+        id: "v_101",
+        title: "赛博极光夜都市",
+        caption: "穿行在赛博朋克夜都市！光影流转间的极致震撼，戴上耳机享受立体环绕原声 ✨",
+        tags: ["#赛博朋克", "#4K超清壁纸", "#Flutter", "#Pencil原型"],
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        coverUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+        musicName: "Alan Walker - Faded (Cyberpunk Remix 2026)",
+        author: AuthorInfo(
+          userId: "u_cyber",
+          nickname: "极客全栈架构师",
+          handle: "@geek_architect",
+          avatarUrl: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
+          isVerified: true,
+          bio: "10年分布式架构专家 | 拆解千万级移动端架构",
+          followers: "128.5w",
+        ),
+        likes: 128400,
+        commentsCount: 4210,
+        shares: 5620,
+        collects: 18900,
+        comments: [
+          VideoComment(
+            id: "c_1",
+            userName: "全栈攻城狮 👑",
+            avatarUrl: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80",
+            content: "Flutter 原生渲染效果太顶了！手势切集完全零延迟，亮色暗色切换很丝滑！",
+            timeAgo: "10分钟前",
+            likes: 1240,
+          ),
+          VideoComment(
+            id: "c_2",
+            userName: "UI艺术家",
+            avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80",
+            content: "双击爱心粒子飞舞动效非常还原，细节到位！",
+            timeAgo: "30分钟前",
+            likes: 312,
+          ),
+        ],
+      ),
+      VideoItem(
+        id: "v_102",
+        title: "超跑破风疾驰时刻",
+        caption: "百公里加速2.6秒！V12自然吸气引擎高转咆哮，男人的终极机械浪漫 🚀💨",
+        tags: ["#顶级超跑", "#速度与激情", "#机械声浪", "#移动端抖音"],
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+        coverUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+        musicName: "Tokyo Drift - Fast & Furious Theme Track",
+        author: AuthorInfo(
+          userId: "u_speed",
+          nickname: "极速声浪俱乐部",
+          handle: "@speed_beasts",
+          avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+          isVerified: true,
+          bio: "引擎轰鸣，速度即信仰！顶级超跑第一视角",
+          followers: "89.2w",
+        ),
+        likes: 98400,
+        commentsCount: 3120,
+        shares: 14200,
+        collects: 9800,
+        comments: [
+          VideoComment(
+            id: "c_3",
+            userName: "赛车手老王",
+            avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
+            content: "这推背感太真实了，声浪调教极其纯粹！",
+            timeAgo: "1小时前",
+            likes: 540,
+          ),
+        ],
+      ),
+      VideoItem(
+        id: "v_103",
+        title: "大自然治愈系风景",
+        caption: "雪山脚下的清晨第一缕日出，清风拂过冰川湖泊，大自然的鬼斧神工令人屏息 🏔️❄️",
+        tags: ["#治愈系美景", "#户外露营", "#大自然", "#航拍视角"],
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+        coverUrl: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+        musicName: "Ludovico Einaudi - Nature Ambient Piano",
+        author: AuthorInfo(
+          userId: "u_nature",
+          nickname: "国家地理旅者",
+          handle: "@geo_voyager",
+          avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+          isVerified: true,
+          bio: "行万里路，用镜头记录星球之美",
+          followers: "245.8w",
+        ),
+        likes: 67200,
+        commentsCount: 1980,
+        shares: 7800,
+        collects: 14200,
+        comments: [],
+      ),
+    ];
+  }
+}

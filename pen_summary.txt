@@ -1,0 +1,129 @@
+Total screens: 18
+--- Screen 1: 01. 推荐流短视频 (Feed Video) ---
+Size: 390x844, pos: (60, 60)
+   [0] 视频画面底图 (rectangle) pos: (0,0) size: 390x760
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 顶部导航栏 (frame) pos: (0,48) size: 390xundefined
+   [3] 横向弹幕轨道1 (frame) pos: (120,110) size: undefinedxundefined
+   [4] 横向弹幕轨道2 (frame) pos: (40,145) size: undefinedxundefined
+   [5] 右侧互动操作栏 (frame) pos: (326,350) size: 52xundefined
+   [6] 视频文案信息区 (frame) pos: (14,515) size: 290xundefined
+   [7] 底部导航栏 (frame) pos: (0,760) size: 390x84
+   [8] 全屏观看按钮 (frame) pos: (135,380) size: 120x38
+   [9] 弹幕开关圆钮 (frame) pos: (290,720) size: 28x28
+--- Screen 2: 02. 图文相册流 (Feed Album) ---
+Size: 390x844, pos: (520, 60)
+   [0] 相册大图底色 (rectangle) pos: (0,0) size: 390x760
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 轮播页码胶囊 (frame) pos: (330,60) size: undefinedxundefined
+   [3] 横向弹幕 (frame) pos: (60,120) size: undefinedxundefined
+   [4] 右侧互动操作栏 (frame) pos: (326,350) size: 52xundefined
+   [5] 图文文案区 (frame) pos: (14,630) size: 290xundefined
+   [6] 底部导航栏 (frame) pos: (0,760) size: 390x84
+--- Screen 3: 03. 推荐流直播推荐 (Feed Live Card) ---
+Size: 390x844, pos: (980, 60)
+   [0] 直播封面大图 (rectangle) pos: (0,0) size: 390x760
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] LIVE动态标签 (frame) pos: (16,56) size: undefinedxundefined
+   [3] 导流浮层 (frame) pos: (45,420) size: 300xundefined
+   [4] 右侧互动操作栏 (frame) pos: (326,350) size: 52xundefined
+   [5] 底部导航栏 (frame) pos: (0,760) size: 390x84
+--- Screen 4: 04. 全屏沉浸直播间 (Live Room) ---
+Size: 390x844, pos: (1440, 60)
+   [0] 全屏直播底画 (rectangle) pos: (0,0) size: 390x844
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 顶部主播信息栏 (frame) pos: (14,50) size: 362xundefined
+   [3] 纵向公屏聊天容器 (frame) pos: (14,500) size: 260xundefined
+   [4] 直播间底部输入与送礼 (frame) pos: (14,780) size: 362xundefined
+--- Screen 5: 05. 真实评论区抽屉 (Comment Drawer) ---
+Size: 390x844, pos: (60, 984)
+   [0] 视频画幅微缩 (rectangle) pos: (0,0) size: 390x240
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 评论抽屉主体 (frame) pos: (0,220) size: 390x624
+--- Screen 6: 06. 朋友专区沉浸流 (Friends Immersive) ---
+Size: 390x844, pos: (520, 984)
+   [0] 雪夜全屏底图 (rectangle) pos: (0,0) size: 390x760
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 顶部标题栏 (frame) pos: (0,48) size: 390xundefined
+   [3] 右侧互动操作栏 (frame) pos: (326,360) size: 52xundefined
+   [4] 朋友信息文案 (frame) pos: (14,560) size: 290xundefined
+   [5] 朋友专属私信栏 (frame) pos: (14,710) size: 362xundefined
+   [6] 底部导航栏 (frame) pos: (0,760) size: 390x84
+--- Screen 7: 07. 消息互动中心 (Messages Center) ---
+Size: 390x844, pos: (980, 984)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 消息顶部 (frame) pos: (0,48) size: 390xundefined
+   [2] 限时日常彩圈栏 (frame) pos: (0,92) size: 390xundefined
+   [3] 三大通知分类 (frame) pos: (16,180) size: 358xundefined
+   [4] 私信消息列表 (frame) pos: (16,260) size: 358xundefined
+   [5] 底部导航栏 (frame) pos: (0,760) size: 390x84
+--- Screen 8: 08. 个人主页「我」 (My Profile) ---
+Size: 390x844, pos: (1440, 984)
+   [0] 主页背景图 (rectangle) pos: (0,0) size: 390x160
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 顶部操作栏 (frame) pos: (0,48) size: 390xundefined
+   [3] 个人信息大卡片 (frame) pos: (16,130) size: 358xundefined
+   [4] 作品Tabs (frame) pos: (16,330) size: 358xundefined
+   [5] 作品空状态居中卡片 (frame) pos: (45,420) size: 300xundefined
+   [6] 底部导航栏 (frame) pos: (0,760) size: 390x84
+--- Screen 9: 09. 个人中心侧边抽屉 (Sidebar Drawer) ---
+Size: 390x844, pos: (60, 1908)
+   [0] 暗色遮罩背景 (rectangle) pos: (0,0) size: 390x844
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 右侧抽屉面板 (frame) pos: (100,0) size: 290x844
+--- Screen 10: 10. 独立设置页 (Settings Page) ---
+Size: 390x844, pos: (520, 1908)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 设置导航栏 (frame) pos: (0,48) size: 390xundefined
+   [2] AI智能搜索与提问卡片 (frame) pos: (16,92) size: 358xundefined
+   [3] 设置项列表 (frame) pos: (16,168) size: 358xundefined
+--- Screen 11: 11. 切换账号页 (Switch Account) ---
+Size: 390x844, pos: (980, 1908)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 顶部关闭 (frame) pos: (0,48) size: 390xundefined
+   [2] 页面大标题区 (frame) pos: (20,100) size: 350xundefined
+   [3] 账号卡片列表 (frame) pos: (20,180) size: 350xundefined
+   [4] 添加账号按钮 (frame) pos: (20,730) size: 350x48
+--- Screen 12: 12. 创建新账号浮层 (Create Account Sheet) ---
+Size: 390x844, pos: (1440, 1908)
+   [0] 暗色背景 (rectangle) pos: (0,0) size: 390x844
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 半屏浮层容器 (frame) pos: (0,440) size: 390x404
+--- Screen 13: 13. 选择注册方式 (Select Register) ---
+Size: 390x844, pos: (60, 2832)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 顶部工具栏 (frame) pos: (0,48) size: 390xundefined
+   [2] 登录大标题区 (frame) pos: (24,120) size: 342xundefined
+   [3] 输入框容器 (frame) pos: (24,210) size: 342x52
+   [4] 获取验证码按钮 (frame) pos: (24,290) size: 342x48
+   [5] 第三方快速登录 (frame) pos: (24,720) size: 342xundefined
+--- Screen 14: 14. 手机号与软键盘 (Phone & Keyboard) ---
+Size: 390x844, pos: (520, 2832)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 顶部导航 (frame) pos: (0,48) size: 390xundefined
+   [2] 手机号输入展示区 (frame) pos: (24,130) size: 342xundefined
+   [3] iOS数字软键盘 (frame) pos: (0,530) size: 390x314
+--- Screen 15: 15. 相机拍摄工作台 (Camera Studio) ---
+Size: 390x844, pos: (980, 2832)
+   [0] 取景器画面 (rectangle) pos: (0,0) size: 390x844
+   [1] 状态栏 (frame) pos: (0,0) size: 390x44
+   [2] 顶部拍摄工具 (frame) pos: (0,48) size: 390xundefined
+   [3] 右侧拍摄工具栈 (frame) pos: (338,110) size: 44xundefined
+   [4] 底部快门与模式 (frame) pos: (0,670) size: 390xundefined
+--- Screen 16: 16. 搜索中心主页 (Search Home) ---
+Size: 390x844, pos: (1440, 2832)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 搜索输入栏 (frame) pos: (16,48) size: 358xundefined
+   [2] 搜索历史区域 (frame) pos: (16,104) size: 358xundefined
+   [3] 抖音实时热点榜 (frame) pos: (16,190) size: 358xundefined
+--- Screen 17: 17. 搜索双列瀑布流与AI追问 (Search Waterfall & AI) ---
+Size: 390x844, pos: (60, 3756)
+   [0] 状态栏 (frame) pos: (0,0) size: 390x44
+   [1] 顶部搜索框 (frame) pos: (16,48) size: 358xundefined
+   [2] 二级Tabs (frame) pos: (16,96) size: 358xundefined
+   [3] AI搜索解析卡片 (frame) pos: (16,136) size: 358xundefined
+   [4] 双列瀑布流容器 (frame) pos: (16,242) size: 358xundefined
+--- Screen 18: 18. 全局复用组件库 (Design System Library) ---
+Size: 780x844, pos: (520, 3756)
+   [0] 组件库标题头 (frame) pos: (undefined,undefined) size: 708xundefined
+   [1] 组件展示网格 (frame) pos: (undefined,undefined) size: 708xundefined

@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter%3Awght%40100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body style="background-color: #ffffff">
+    <div style="height: 844px; position: relative; width: 780px">
+      <div
+        data-pencil-name="04. 全屏沉浸直播间 (Live Room)"
+        style="background-color: #08080c; border-radius: 44px; box-sizing: border-box; height: 844px; left: 0px; outline: 4px solid #2c2c36; overflow: hidden; position: absolute; top: 0px; width: 390px"
+      >
+        <div
+          data-pencil-name="全屏直播底画"
+          style="background-color: #1c1424; box-sizing: border-box; height: 844px; left: 0px; position: absolute; top: 0px; width: 390px; z-index: 0"
+        ></div>
+        <div
+          data-pencil-name="状态栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: 44px; justify-content: space-between; left: 0px; padding: 14px 24px 0px 24px; position: absolute; top: 0px; width: 390px; z-index: 1"
+        >
+          <div
+            data-pencil-name="时间"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            11:45
+          </div>
+          <div
+            data-pencil-name="灵动岛"
+            style="align-items: flex-start; background-color: #000000; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 28px; justify-content: flex-start; width: 120px"
+          ></div>
+          <div
+            data-pencil-name="电量与信号"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            5G 100%
+          </div>
+        </div>
+        <div
+          data-pencil-name="顶部主播信息栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: space-between; left: 14px; position: absolute; top: 50px; width: 362px; z-index: 2"
+        >
+          <div
+            data-pencil-name="主播胶囊"
+            style="align-items: center; background-color: #00000080; border-radius: 20px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 6px; height: fit-content; justify-content: flex-start; padding: 3px 8px 3px 4px; width: fit-content"
+          >
+            <div
+              data-pencil-name="主播头像"
+              style="background-color: #444444; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 32px; width: 32px"
+            ></div>
+            <div
+              data-pencil-name="名称与本场热度"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="主播名"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                邵艾伦日常
+              </div>
+              <div
+                data-pencil-name="本场热度"
+                style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 9px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                本场点赞 4.8w
+              </div>
+            </div>
+            <div
+              data-pencil-name="关注按钮"
+              style="align-items: flex-start; background-color: #FE2C55; border-radius: 12px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 4px 10px; width: fit-content"
+            >
+              <div
+                data-pencil-name="关注字"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                关注
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="右上角关闭与榜单"
+            style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 8px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="观众1"
+              style="background-color: #666; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 26px; width: 26px"
+            ></div>
+            <div
+              data-pencil-name="观众2"
+              style="background-color: #888; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; height: 26px; width: 26px"
+            ></div>
+            <div
+              data-pencil-name="关闭X"
+              style="align-items: center; background-color: #00000066; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 28px; justify-content: center; width: 28px"
+            >
+              <div
+                data-pencil-name="X"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                ✕
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="纵向公屏聊天容器"
+          style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; height: fit-content; justify-content: flex-start; left: 14px; position: absolute; top: 500px; width: 260px; z-index: 3"
+        >
+          <div
+            data-pencil-name="弹幕1"
+            style="align-items: flex-start; background-color: #00000080; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 5px 10px; width: fit-content"
+          >
+            <div
+              data-pencil-name="弹幕文本"
+              style="box-sizing: border-box; color: #face15; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              系统: 欢迎来到直播间！请文明交流
+            </div>
+          </div>
+          <div
+            data-pencil-name="弹幕2"
+            style="align-items: flex-start; background-color: #00000080; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 5px 10px; width: fit-content"
+          >
+            <div
+              data-pencil-name="弹幕文本"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              英语爱好者: 老师今天讲解舌位太清晰了
+            </div>
+          </div>
+          <div
+            data-pencil-name="弹幕3"
+            style="align-items: flex-start; background-color: #00000080; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 5px 10px; width: fit-content"
+          >
+            <div
+              data-pencil-name="弹幕文本"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              小克劳德: 刚刚跟读了一遍，赞！
+            </div>
+          </div>
+          <div
+            data-pencil-name="弹幕4"
+            style="align-items: flex-start; background-color: #00000080; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 5px 10px; width: fit-content"
+          >
+            <div
+              data-pencil-name="弹幕文本"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              满月刘海: 主播今天几点下播？
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="直播间底部输入与送礼"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: space-between; left: 14px; position: absolute; top: 780px; width: 362px; z-index: 4"
+        >
+          <div
+            data-pencil-name="聊聊胶囊"
+            style="align-items: flex-start; background-color: #00000080; border-radius: 18px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 8px 14px; width: 170px"
+          >
+            <div
+              data-pencil-name="聊聊文案"
+              style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              说点什么...
+            </div>
+          </div>
+          <div
+            data-pencil-name="更多"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 22px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            ⋯
+          </div>
+          <div
+            data-pencil-name="连麦"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 20px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            🎙️
+          </div>
+          <div
+            data-pencil-name="礼物"
+            style="box-sizing: border-box; color: #FE2C55; font-family: Inter, system-ui, sans-serif; font-size: 22px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            🎁
+          </div>
+          <div
+            data-pencil-name="点赞"
+            style="box-sizing: border-box; color: #FE2C55; font-family: Inter, system-ui, sans-serif; font-size: 24px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            💖
+          </div>
+        </div>
+      </div>
+      <div
+        data-pencil-name="19. 他人个人主页 (User Profile)"
+        style="background-color: #ffffff; border-radius: 44px; box-sizing: border-box; height: 844px; left: 390px; outline: 4px solid #2c2c36; overflow: hidden; position: absolute; top: 0px; width: 390px"
+      >
+        <div
+          data-pencil-name="顶部Hero背景大图"
+          style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=1000&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; height: 220px; left: 0px; position: absolute; top: 0px; width: 390px; z-index: 0"
+        >
+          <div
+            data-pencil-name="渐变暗色遮罩"
+            style="background-color: #0000004d; box-sizing: border-box; height: 220px; left: 0px; position: absolute; top: 0px; width: 390px; z-index: 0"
+          ></div>
+        </div>
+        <div
+          data-pencil-name="状态栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: 44px; justify-content: space-between; left: 0px; padding: 14px 24px 0px 24px; position: absolute; top: 0px; width: 390px; z-index: 1"
+        >
+          <div
+            data-pencil-name="时间"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            23:10
+          </div>
+          <div
+            data-pencil-name="灵动岛"
+            style="align-items: flex-start; background-color: #000000; border-radius: 14px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 28px; justify-content: flex-start; width: 120px"
+          ></div>
+          <div
+            data-pencil-name="电量与信号"
+            style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+          >
+            5G 100%
+          </div>
+        </div>
+        <div
+          data-pencil-name="顶部操作导航栏"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: 44px; justify-content: space-between; left: 0px; padding: 0px 16px; position: absolute; top: 44px; width: 390px; z-index: 2"
+        >
+          <div
+            data-pencil-name="返回按钮"
+            style="align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+          >
+            <div
+              data-pencil-name="返回图标"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 24px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              ‹
+            </div>
+          </div>
+          <div
+            data-pencil-name="右侧操作区"
+            style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 8px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="求更新按钮"
+              style="align-items: center; background-color: #00000066; border-radius: 16px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; padding: 6px 12px 6px 10px; width: fit-content"
+            >
+              <div
+                data-pencil-name="更新图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                👉
+              </div>
+              <div
+                data-pencil-name="求更新文字"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                求更新
+              </div>
+            </div>
+            <div
+              data-pencil-name="搜索按钮"
+              style="align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+            >
+              <div
+                data-pencil-name="搜索图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                🔍
+              </div>
+            </div>
+            <div
+              data-pencil-name="更多按钮"
+              style="align-items: center; background-color: #00000066; border-radius: 17px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 34px; justify-content: center; width: 34px"
+            >
+              <div
+                data-pencil-name="更多图标"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                •••
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="用户头像与名称区"
+          style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 14px; height: fit-content; justify-content: flex-start; left: 16px; position: absolute; top: 110px; width: fit-content; z-index: 3"
+        >
+          <div
+            data-pencil-name="头像外环"
+            style="align-items: flex-start; background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=400&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 40px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 80px; justify-content: flex-start; outline-offset: -1.5px; outline: 3px solid #ffffff; width: 80px"
+          ></div>
+          <div
+            data-pencil-name="名称抖音号列"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="作者昵称"
+              style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 22px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              james_meow
+            </div>
+            <div
+              data-pencil-name="抖音号行"
+              style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="抖音号文本"
+                style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                抖音号: 45575225266
+              </div>
+              <div
+                data-pencil-name="复制图标"
+                style="box-sizing: border-box; color: #ffffffb3; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                ❐
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-pencil-name="白底详情与作品卡片"
+          style="align-items: flex-start; background-color: #ffffff; border-radius: 20px 20px 0px 0px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; height: 640px; justify-content: flex-start; left: 0px; padding: 16px; position: absolute; top: 204px; width: 390px; z-index: 4"
+        >
+          <div
+            data-pencil-name="社交数据行"
+            style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 20px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="项_获赞"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                147.2万
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                获赞
+              </div>
+            </div>
+            <div
+              data-pencil-name="项_关注"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                43
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                关注
+              </div>
+            </div>
+            <div
+              data-pencil-name="项_粉丝"
+              style="align-items: flex-end; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="数值"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 800; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                7862
+              </div>
+              <div
+                data-pencil-name="标签"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                粉丝
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="个性签名与简介"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 3px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="简介1"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              喜欢一只咪🐈
+            </div>
+            <div
+              data-pencil-name="简介2"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              🈲连赞 乱剪乱发
+            </div>
+            <div
+              data-pencil-name="简介3"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              取图可以进群⬇️
+            </div>
+            <div
+              data-pencil-name="IP属地胶囊"
+              style="align-items: flex-start; background-color: #f2f3f5; border-radius: 4px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: fit-content; justify-content: flex-start; padding: 3px 6px; width: fit-content"
+            >
+              <div
+                data-pencil-name="IP文字"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 500; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                IP: 陕西
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="群聊入口卡片"
+            style="align-items: center; background-color: #f8f9fa; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 12px; height: fit-content; justify-content: flex-start; padding: 10px 12px; width: 100%"
+          >
+            <div
+              data-pencil-name="群聊气泡图标"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 20px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              💭
+            </div>
+            <div
+              data-pencil-name="群聊文字列"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: fit-content"
+            >
+              <div
+                data-pencil-name="群聊标题"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                群聊
+              </div>
+              <div
+                data-pencil-name="群聊副标"
+                style="box-sizing: border-box; color: #86878c; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                要图进群
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="关注操作按钮行"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 8px; height: fit-content; justify-content: flex-start; width: 100%"
+          >
+            <div
+              data-pencil-name="红色关注大按钮"
+              style="align-items: center; background-color: #fe2c55; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex: 1 1 0; gap: 0px; height: 40px; justify-content: center"
+            >
+              <div
+                data-pencil-name="关注文字"
+                style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                + 关注
+              </div>
+            </div>
+            <div
+              data-pencil-name="私信倒三角按钮"
+              style="align-items: center; background-color: #f2f3f5; border-radius: 8px; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 0px; height: 40px; justify-content: center; width: 40px"
+            >
+              <div
+                data-pencil-name="倒三角图标"
+                style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+              >
+                ▼
+              </div>
+            </div>
+          </div>
+          <div
+            data-pencil-name="作品Tab行"
+            style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 4px; height: fit-content; justify-content: flex-start; width: fit-content"
+          >
+            <div
+              data-pencil-name="作品Tab文字"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              作品 97
+            </div>
+            <div
+              data-pencil-name="Tab倒三角"
+              style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+            >
+              ▼
+            </div>
+          </div>
+          <div
+            data-pencil-name="作品网格容器"
+            style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: column; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+          >
+            <div
+              data-pencil-name="网格第1行"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+            >
+              <div
+                data-pencil-name="作品1_置顶"
+                style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    4.1万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品2_圣罗兰"
+                style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="中间配文"
+                  style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; left: 8px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 70px; white-space: nowrap; z-index: 1"
+                >
+                  SAINTLAURENT
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 2"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    4.1万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品3_热身"
+                style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #face15; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #000000; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    置顶
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="中间配文"
+                  style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; left: 8px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 70px; white-space: nowrap; z-index: 1"
+                >
+                  3秒时间 詹咪热身
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 2"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    1.2万
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              data-pencil-name="网格第2行"
+              style="align-items: flex-start; box-sizing: border-box; display: flex; flex-direction: row; flex-shrink: 0; gap: 2px; height: fit-content; justify-content: flex-start; width: 100%"
+            >
+              <div
+                data-pencil-name="作品4_10小时前"
+                style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="角标"
+                  style="align-items: flex-start; background-color: #00000080; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: row; gap: 0px; height: fit-content; justify-content: flex-start; left: 4px; padding: 2px 4px; position: absolute; top: 4px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="角标文字"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    10小时前
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    3.8万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品5_演唱"
+                style="background-image: url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    5.6万
+                  </div>
+                </div>
+              </div>
+              <div
+                data-pencil-name="作品6_绿发刚刚看过"
+                style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=300&amp;q=80'); background-position: center; background-repeat: no-repeat; background-size: cover; box-sizing: border-box; flex: 1 1 0; height: 140px; position: relative"
+              >
+                <div
+                  data-pencil-name="点赞数行"
+                  style="align-items: center; box-sizing: border-box; display: flex; flex-direction: row; gap: 3px; height: fit-content; justify-content: flex-start; left: 6px; position: absolute; top: 118px; width: fit-content; z-index: 0"
+                >
+                  <div
+                    data-pencil-name="心形"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    ♡
+                  </div>
+                  <div
+                    data-pencil-name="获赞数"
+                    style="box-sizing: border-box; color: #ffffff; font-family: Inter, system-ui, sans-serif; font-size: 11px; font-style: normal; font-weight: 600; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    8.9万
+                  </div>
+                </div>
+                <div
+                  data-pencil-name="刚刚看过药丸"
+                  style="align-items: center; background-color: #ffffff; border-radius: 12px; box-sizing: border-box; display: flex; flex-direction: row; gap: 2px; height: fit-content; justify-content: flex-start; left: 24px; padding: 3px 8px; position: absolute; top: 110px; width: fit-content; z-index: 1"
+                >
+                  <div
+                    data-pencil-name="文字"
+                    style="box-sizing: border-box; color: #161823; font-family: Inter, system-ui, sans-serif; font-size: 10px; font-style: normal; font-weight: 700; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap"
+                  >
+                    刚刚看过 ︾
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

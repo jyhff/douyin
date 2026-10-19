@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: 抖音移动端核心业务接口契约 (Douyin Mobile API Contract)
+  description: 规范移动端与后端微服务交互的标准 RESTful 接口契约
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: 本地研发与测试服务
+
+paths:
+  /feed:
+    get:
+      summary: 获取沉浸式短视频Feed流
+      parameters:
+        - name: cursor
+          in: query
+          description: 分页游标时间戳
+          schema:
+            type: integer
+        - name: count
+          in: query
+          description: 拉取视频数量 (默认 10)
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: 成功返回推荐视频流
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: integer, example: 0 }
+                  cursor: { type: integer, example: 1729152000 }
+                  has_more: { type: boolean, example: true }
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VideoItem'
+
+  /videos/{id}/like:
+    post:
+      summary: 点赞 / 取消点赞视频
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: 操作成功返回最新统计
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  is_liked: { type: boolean }
+                  total_likes: { type: integer }
+
+  /videos/{id}/comments:
+    get:
+      summary: 获取指定视频的评论列表 (半屏抽屉使用)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: 成功返回评论树
+    post:
+      summary: 发表一条新评论
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, maxLength: 300 }
+      responses:
+        '201':
+          description: 评论发表成功
+
+components:
+  schemas:
+    VideoItem:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        caption: { type: string }
+        tags: { type: array, items: { type: string } }
+        play_url: { type: string }
+        cover_url: { type: string }
+        duration: { type: integer }
+        author:
+          type: object
+          properties:
+            user_id: { type: string }
+            nickname: { type: string }
+            avatar_url: { type: string }
+            is_followed: { type: boolean }
+        statistics:
+          type: object
+          properties:
+            likes: { type: integer }
+            comments: { type: integer }
+            shares: { type: integer }
+            collects: { type: integer }

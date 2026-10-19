@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing and outputs
+dist/
+screenshots/
+test*.png
+extracted_*.html
+check_markup.cjs
+integrate_profile.cjs
+switch_to_local_assets.cjs
+test_*.cjs
+capture_*.cjs
+extract_script.*
+
+# Local Env
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# IDE and Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Mobile app build
+douyin_mobile_app/build/
+douyin_mobile_app/.dart_tool/
